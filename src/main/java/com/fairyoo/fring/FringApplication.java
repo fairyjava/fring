@@ -3,6 +3,11 @@ package com.fairyoo.fring;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * fring application
+ *
+ * @author by MengYi at 2018-12-26 15:22
+*/
 @SpringBootApplication
 public class FringApplication {
 

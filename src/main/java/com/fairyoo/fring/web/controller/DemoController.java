@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 /**
+ * 只需要类添加  @RestController  即可，默认类中的方法都会以json的格式返回.
+ * 注意：@RestController(value = "/demo/v1") 会异常
+ *
  * @author MengYi at 2018-12-26 14:45
  */
 @RestController
@@ -27,7 +30,11 @@ public class DemoController {
         return "hello world";
     }
 
-
+    /**
+     * uid
+     *
+     * @author by MengYi at 2018-12-26 15:24
+     */
     @RequestMapping("/uid")
     public String uid(HttpSession session) {
         UUID uid = (UUID) session.getAttribute("uid");
@@ -37,4 +44,8 @@ public class DemoController {
         session.setAttribute("uid", uid);
         return session.getId();
     }
+
+
+
+
 }

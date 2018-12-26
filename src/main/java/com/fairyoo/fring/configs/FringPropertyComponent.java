@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
  * 配置在application.properties中
  *
  * @author MengYi at 2018-12-26 14:12
- *
+ * Component和@Configuration作为配置类的差别： https://blog.csdn.net/long476964/article/details/80626930
  */
 @Data
 @Component
-public class FringApiProperty {
+public class FringPropertyComponent {
 
     @Value("${com.fairyoo.fring.name}")
     private String name;

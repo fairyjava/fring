@@ -1,6 +1,9 @@
 package com.fairyoo.fring.web.controller;
 
 
+import com.fairyoo.fring.configs.FringApiProperty;
+import lombok.var;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +24,23 @@ import java.util.UUID;
 public class DemoController {
 
     /**
+     * application.properties中：com.fairyoo.fring
+     *
+     * @author by MengYi at 2018-12-26 15:57
+    */
+    @Autowired
+    private FringApiProperty fringApiProperty;
+
+    /**
      * hello
      *
      * @author by MengYi at 2018-12-26 14:47
      */
     @GetMapping("/hello")
     public String hello() {
-        return "hello world";
+        var name = fringApiProperty.getName();
+        var desc = fringApiProperty.getDescription();
+        return name + ": " + desc;
     }
 
     /**

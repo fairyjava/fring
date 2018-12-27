@@ -19,7 +19,7 @@ public class User implements Serializable {
      * @author by MengYi at 2018-12-26 21:24
     */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**

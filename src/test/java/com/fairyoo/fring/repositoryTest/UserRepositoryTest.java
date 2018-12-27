@@ -25,7 +25,7 @@ public class UserRepositoryTest {
     public void findOneCity() throws Exception {
 
         var cityOptional = cityRepository.findById(1L);
-        var city = !cityOptional.isPresent() ? null : cityOptional.get();
+        var city = cityOptional.orElse(null);
     }
 
 
@@ -60,7 +60,7 @@ public class UserRepositoryTest {
     @Test
     public void deleteById() throws Exception {
         var citys = cityRepository.findAll();
-        if (citys != null && citys.isEmpty() == false) {
+        if (citys != null && !citys.isEmpty()) {
             var first = citys.get(0);
             cityRepository.deleteById(first.getId());
         }

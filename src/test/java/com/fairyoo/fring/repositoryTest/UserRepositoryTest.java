@@ -2,6 +2,7 @@ package com.fairyoo.fring.repositoryTest;
 
 import com.fairyoo.fring.model.City;
 import lombok.var;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +39,14 @@ public class UserRepositoryTest {
     @Test
     public void createCity() throws Exception {
         var city = new City();
-        city.setId(2L);
+        //city.setId(100L);
         city.setCityName("sdfdsf");
         city.setDescription("dsgsdg sdsd ");
         city.setProvinceId(2L);
         cityRepository.save(city);
+
+        System.out.println(UserRepositoryTest.class.getName() + ":createCity(): city.id = " + city.getId());
+        Assertions.assertThat(city.getId()).isNotNull();
     }
 
 
@@ -63,6 +67,8 @@ public class UserRepositoryTest {
         if (citys != null && !citys.isEmpty()) {
             var first = citys.get(0);
             cityRepository.deleteById(first.getId());
+            
+            //Assertions.assertThat(first).isNotNull();
         }
 
     }

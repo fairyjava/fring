@@ -15,6 +15,7 @@ public class FringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FringApplication.class, args);
+        System.out.println("服务启动URL地址：http://localhost:9002/demo/v1/hello");
     }
 
 }

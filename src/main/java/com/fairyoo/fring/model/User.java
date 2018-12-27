@@ -2,10 +2,7 @@ package com.fairyoo.fring.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -13,6 +10,7 @@ import java.io.Serializable;
  */
 @Data
 @Entity
+@Table(name = "User")
 public class User implements Serializable {
 
     /**

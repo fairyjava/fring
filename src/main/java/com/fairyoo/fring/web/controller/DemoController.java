@@ -3,6 +3,7 @@ package com.fairyoo.fring.web.controller;
 
 import com.fairyoo.fring.configs.FringPropertyComponent;
 import com.fairyoo.fring.configs.FringPropertyConfiguration;
+import io.swagger.annotations.Api;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -19,6 +20,7 @@ import java.util.UUID;
  *
  * @author MengYi at 2018-12-26 14:45
  */
+@Api(tags ="Demo", value = "")
 @RestController
 @RequestMapping(value = "/demo/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DemoController {

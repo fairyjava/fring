@@ -1,10 +1,15 @@
 package com.fairyoo.fring.web.controller;
 
+import io.swagger.annotations.Api;
+import springfox.documentation.annotations.ApiIgnore;
+
 /**
  * 语法
  *
  * @author MengYi at 2018-12-27 11:25
  */
+@Api(tags ="语法", value = "")
+@ApiIgnore
 public class GrammarController {
 
     private interface Animal {

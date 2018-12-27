@@ -1,10 +1,12 @@
 package com.fairyoo.fring.web.controller;
 
+import io.swagger.annotations.Api;
 import lombok.var;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +18,8 @@ import java.util.Scanner;
  *
  * @author MengYi at 2018-12-27 10:19
  */
+@Api(tags ="Learn", value = "")
+@ApiIgnore
 @RestController
 @RequestMapping(value = "/learn/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class LearnController {

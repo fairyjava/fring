@@ -19,7 +19,7 @@ public class City implements Serializable {
      * 城市编号
      */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**

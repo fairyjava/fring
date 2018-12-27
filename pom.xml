@@ -11,7 +11,7 @@
     <groupId>com.fairyoo</groupId>
     <artifactId>fring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>fring</name>
+    <name>com.fairyoo.fring::spring boot restful api</name>
     <description>Fring project for Spring Boot,Learn Java</description>
 
     <properties>

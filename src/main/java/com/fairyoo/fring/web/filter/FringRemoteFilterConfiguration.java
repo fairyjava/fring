@@ -20,8 +20,6 @@ public class FringRemoteFilterConfiguration {
     /**
      * RemoteIpFilter
      *
-     * @param
-     * @return
      * @author by MengYi at 2018-12-26 20:50
     */
     @Bean
@@ -32,8 +30,6 @@ public class FringRemoteFilterConfiguration {
     /**
      * FilterRegistrationBean
      *
-     * @param
-     * @return
      * @author by MengYi at 2018-12-26 20:49
     */
     @Bean

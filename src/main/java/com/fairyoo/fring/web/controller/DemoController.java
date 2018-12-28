@@ -1,8 +1,7 @@
 package com.fairyoo.fring.web.controller;
 
 
-import com.fairyoo.fring.configs.FringPropertyComponent;
-import com.fairyoo.fring.configs.FringPropertyConfiguration;
+
 import io.swagger.annotations.Api;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,45 +34,45 @@ public class DemoController {
         return "Hello Word";
     }
 
-    /**
-     * application.properties中：com.fairyoo.fring
-     *
-     * @author by MengYi at 2018-12-26 15:57
-     */
-    @Autowired
-    private FringPropertyComponent fringPropertyComponent;
+//    /**
+//     * application.properties中：com.fairyoo.fring
+//     *
+//     * @author by MengYi at 2018-12-26 15:57
+//     */
+//    @Autowired
+//    private FringPropertyComponent fringPropertyComponent;
 
-    /**
-     * application.properties中：com.fairyoo.fring
-     *
-     * @author by MengYi at 2018-12-26 15:57
-     */
-    @Autowired
-    private FringPropertyConfiguration fringPropertyConfiguration;
+//    /**
+//     * application.properties中：com.fairyoo.fring
+//     *
+//     * @author by MengYi at 2018-12-26 15:57
+//     */
+//    @Autowired
+//    private FringPropertyConfiguration fringPropertyConfiguration;
 
-    /**
-     * component
-     *
-     * @author by MengYi at 2018-12-26 14:47
-     */
-    @GetMapping("/component")
-    public String component() {
-        var name = fringPropertyComponent.getName();
-        var desc = fringPropertyComponent.getDescription();
-        return name + ": " + desc;
-    }
+//    /**
+//     * component
+//     *
+//     * @author by MengYi at 2018-12-26 14:47
+//     */
+//    @GetMapping("/component")
+//    public String component() {
+//        var name = fringPropertyComponent.getName();
+//        var desc = fringPropertyComponent.getDescription();
+//        return name + ": " + desc;
+//    }
 
-    /**
-     * Configuration
-     *
-     * @author by MengYi at 2018-12-26 14:47
-     */
-    @GetMapping("/configuration")
-    public String configuration() {
-        var getUsername = fringPropertyConfiguration.getUsername();
-        var getPassword = fringPropertyConfiguration.getPassword();
-        return "getUsername:" + getUsername + ",getPassword:" + getPassword;
-    }
+//    /**
+//     * Configuration
+//     *
+//     * @author by MengYi at 2018-12-26 14:47
+//     */
+//    @GetMapping("/configuration")
+//    public String configuration() {
+//        var getUsername = fringPropertyConfiguration.getUsername();
+//        var getPassword = fringPropertyConfiguration.getPassword();
+//        return "getUsername:" + getUsername + ",getPassword:" + getPassword;
+//    }
 
 
     /**

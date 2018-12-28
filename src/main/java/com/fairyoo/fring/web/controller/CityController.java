@@ -3,7 +3,10 @@ package com.fairyoo.fring.web.controller;
 import com.fairyoo.fring.model.City;
 import com.fairyoo.fring.repository.CityRepository;
 import io.swagger.annotations.*;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,14 @@ public class CityController {
     @Autowired
     private com.fairyoo.fring.repository.CityRepository cityRepository;
 
+    @Autowired
+    private org.springframework.data.redis.core.RedisTemplate redisTemplate;
+
+    @Autowired
+    private org.springframework.data.redis.core.StringRedisTemplate stringRedisTemplate;
+
+
+
 
     /**
      * 按id获取单个城市
@@ -33,6 +44,8 @@ public class CityController {
     @ApiOperation(value = "按id获取单个城市")
     @RequestMapping(value = "/city/{id}", method = RequestMethod.GET)
     public City findOneCity(@PathVariable("id") Long id) {
+
+
         City city = cityRepository.findById(id).get();
         return city;
     }
@@ -51,7 +64,13 @@ public class CityController {
     })
     @RequestMapping(value = "/citys", method = RequestMethod.GET)
     public List<City> findAllByProvinceId(@RequestParam Long provinceId) {
-        return cityRepository.findAllByProvinceId(provinceId);
+
+        var list = cityRepository.findAllByProvinceId(provinceId);
+
+        redisTemplate.opsForList().leftPush("user:list", list.toString());
+        stringRedisTemplate.opsForValue().set("user:name", "张三");
+
+        return list;
     }
 
     /**

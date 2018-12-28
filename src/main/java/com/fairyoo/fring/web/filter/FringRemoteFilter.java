@@ -1,4 +1,4 @@
-package com.fairyoo.fring.web;
+package com.fairyoo.fring.web.filter;
 
 import lombok.var;
 

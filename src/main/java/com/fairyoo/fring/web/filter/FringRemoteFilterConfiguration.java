@@ -1,4 +1,4 @@
-package com.fairyoo.fring.web;
+package com.fairyoo.fring.web.filter;
 
 import lombok.var;
 import org.apache.catalina.filters.RemoteIpFilter;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * 添加@Configuration 注解，将自定义Filter加入过滤链
  */
 @Configuration
-public class WebConfiguration {
+public class FringRemoteFilterConfiguration {
 
     /**
      * RemoteIpFilter

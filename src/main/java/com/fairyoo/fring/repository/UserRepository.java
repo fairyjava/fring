@@ -1,6 +1,6 @@
 package com.fairyoo.fring.repository;
 
-import com.fairyoo.fring.model.User;
+import com.fairyoo.fring.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

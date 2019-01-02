@@ -1,4 +1,4 @@
-package com.fairyoo.fring.model;
+package com.fairyoo.fring.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

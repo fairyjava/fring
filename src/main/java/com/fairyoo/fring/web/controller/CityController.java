@@ -1,12 +1,9 @@
 package com.fairyoo.fring.web.controller;
 
-import com.fairyoo.fring.model.City;
-import com.fairyoo.fring.repository.CityRepository;
+import com.fairyoo.fring.entity.City;
 import io.swagger.annotations.*;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
 package com.fairyoo.fring.repository;
 
-import com.fairyoo.fring.model.City;
+import com.fairyoo.fring.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 

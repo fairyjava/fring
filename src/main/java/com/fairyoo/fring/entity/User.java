@@ -1,9 +1,10 @@
-package com.fairyoo.fring.model;
+package com.fairyoo.fring.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author MengYi at 2018-12-26 21:21
@@ -31,7 +32,7 @@ public class User implements Serializable {
     private String phone;
 
     /**
-     * name
+     * 姓名
      *
      * @author by MengYi at 2018-12-26 21:25
      */
@@ -40,12 +41,31 @@ public class User implements Serializable {
 
 
     /**
-     * email
+     * 邮箱
      *
      * @author by MengYi at 2018-12-26 21:25
      */
     @Column(name = "email", nullable = false)
     private String email;
+
+
+    /**
+     * 创建时间
+     *
+     * @author by MengYi at 2019-01-02 20:12
+    */
+    @Column(name = "CreationTime", nullable = false)
+    private Date creationTime;
+
+    /**
+     * 修改时间
+     *
+     * @author by MengYi at 2019-01-02 20:12
+    */
+    @Column(name = "LastModificationTime", nullable = false)
+    private Date lastModificationTime;
+
+
 
 
     public User() {

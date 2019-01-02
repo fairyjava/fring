@@ -1,9 +1,11 @@
 package com.fairyoo.fring.web.dtoout;
 
-import com.fairyoo.fring.entity.City;
+import com.fairyoo.fring.entity.CityEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 城市dto
@@ -12,7 +14,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel(value = "城市")
-public class CityOut {
+public class CityOut implements Serializable {
 
     /**
      * 城市id
@@ -39,7 +41,8 @@ public class CityOut {
     private String description;
 
 
-    public CityOut(City model){
+    public CityOut(){}
+    public CityOut(CityEntity model){
 
         this.id = model.getId();
         this.provinceId = model.getProvinceId();

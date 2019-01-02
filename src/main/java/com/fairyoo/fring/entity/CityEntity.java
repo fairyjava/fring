@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "city")
 @ApiModel(value = "城市实体")
-public class City implements Serializable {
+public class CityEntity implements Serializable {
 
     /**
      * 城市id

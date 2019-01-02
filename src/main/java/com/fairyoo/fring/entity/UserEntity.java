@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "User")
-public class User implements Serializable {
+public class UserEntity implements Serializable {
 
     /**
      * 主键id
@@ -68,7 +68,7 @@ public class User implements Serializable {
 
 
 
-    public User() {
+    public UserEntity() {
         super();
     }
 

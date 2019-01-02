@@ -1,6 +1,6 @@
 package com.fairyoo.fring.repositoryTest;
 
-import com.fairyoo.fring.entity.City;
+import com.fairyoo.fring.entity.CityEntity;
 import lombok.var;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -36,7 +36,7 @@ public class UserRepositoryTest {
 
     @Test
     public void createCity() throws Exception {
-        var city = new City();
+        var city = new CityEntity();
         //city.setId(100L);
         city.setCityName("sdfdsf");
         city.setDescription("dsgsdg sdsd ");
@@ -50,7 +50,7 @@ public class UserRepositoryTest {
 
     @Test
     public void modifyCity() throws Exception {
-        var city = new City();
+        var city = new CityEntity();
         city.setId(2L);
         city.setCityName("sdfdsf");
         city.setDescription("dsgsdg sdsd ");

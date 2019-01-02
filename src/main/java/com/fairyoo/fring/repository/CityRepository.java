@@ -1,6 +1,6 @@
 package com.fairyoo.fring.repository;
 
-import com.fairyoo.fring.entity.City;
+import com.fairyoo.fring.entity.CityEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -12,14 +12,14 @@ import java.util.Optional;
  *
  * @author MengYi at 2018-12-27 16:50
  */
-public interface CityRepository extends JpaRepository<City, Long> {
+public interface CityRepository extends JpaRepository<CityEntity, Long> {
 
     /**
      * 获取城市信息列表
      * @param provinceId provinceId
      * @return List<City>
      */
-    List<City> findAllByProvinceId(long provinceId);
+    List<CityEntity> findAllByProvinceId(long provinceId);
 
     /**
      * 根据城市 ID，获取城市信息
@@ -28,7 +28,7 @@ public interface CityRepository extends JpaRepository<City, Long> {
      * @return Optional<City>
      */
     @Override
-    Optional<City> findById(@Param("id") Long id);
+    Optional<CityEntity> findById(@Param("id") Long id);
 
     /**
      * 新增|修改
@@ -38,7 +38,7 @@ public interface CityRepository extends JpaRepository<City, Long> {
      * @author by MengYi at 2018-12-27 16:58
     */
     @Override
-    City save(City city);
+    CityEntity save(CityEntity city);
 
 
 

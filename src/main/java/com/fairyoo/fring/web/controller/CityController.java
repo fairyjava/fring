@@ -1,6 +1,7 @@
 package com.fairyoo.fring.web.controller;
 
-import com.fairyoo.fring.entity.City;
+import com.fairyoo.fring.entity.CityEntity;
+import com.fairyoo.fring.web.dtoout.CityOut;
 import io.swagger.annotations.*;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 城市管理
@@ -29,8 +31,6 @@ public class CityController {
     private org.springframework.data.redis.core.StringRedisTemplate stringRedisTemplate;
 
 
-
-
     /**
      * 按id获取单个城市
      *
@@ -40,11 +40,10 @@ public class CityController {
      */
     @ApiOperation(value = "按id获取单个城市")
     @RequestMapping(value = "/city/{id}", method = RequestMethod.GET)
-    public City findOneCity(@PathVariable("id") Long id) {
+    public CityOut findOneCity(@PathVariable("id") Long id) {
 
-
-        City city = cityRepository.findById(id).get();
-        return city;
+        var city = cityRepository.findById(id).get();
+        return new CityOut(city);
     }
 
     /**
@@ -60,38 +59,53 @@ public class CityController {
             @ApiImplicitParam(name = "provinceId", value = "省份id", required = true, paramType = "query", dataType = "Long", defaultValue = "2")
     })
     @RequestMapping(value = "/citys", method = RequestMethod.GET)
-    public List<City> findAllByProvinceId(@RequestParam Long provinceId) {
+    public List<CityOut> findAllByProvinceId(@RequestParam Long provinceId) {
 
         var list = cityRepository.findAllByProvinceId(provinceId);
 
         redisTemplate.opsForList().leftPush("user:list", list.toString());
         stringRedisTemplate.opsForValue().set("user:name", "张三");
 
-        return list;
+        var outs = list.stream().map(e -> new CityOut(e)).collect(Collectors.toList());
+        return outs;
     }
 
     /**
      * 新增城市实体
      *
-     * @param city 城市实体
+     * @param dto 城市实体
      * @author by MengYi at 2018-12-27 20:08
      */
     @ApiOperation(value = "新增城市实体")
     @RequestMapping(value = "/city", method = RequestMethod.POST)
-    public void createCity(@RequestBody City city) {
-        cityRepository.save(city);
+    public void createCity(@RequestBody CityOut dto) {
+
+        var model = new CityEntity();
+        model.setId(0L);
+        model.setCityName(dto.getCityName());
+        model.setDescription(dto.getDescription());
+        model.setProvinceId(dto.getProvinceId());
+
+        cityRepository.save(model);
     }
 
     /**
      * 修改城市实体
      *
-     * @param city 城市实体
+     * @param dto 城市实体
      * @author by MengYi at 2018-12-27 20:07
      */
     @ApiOperation(value = "修改城市实体")
     @RequestMapping(value = "/city", method = RequestMethod.PUT)
-    public void modifyCity(@RequestBody City city) {
-        cityRepository.save(city);
+    public void modifyCity(@RequestBody CityEntity dto) {
+
+        var model = new CityEntity();
+        model.setId(dto.getId());
+        model.setCityName(dto.getCityName());
+        model.setDescription(dto.getDescription());
+        model.setProvinceId(dto.getProvinceId());
+
+        cityRepository.save(model);
     }
 
     /**

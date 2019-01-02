@@ -1,6 +1,6 @@
 package com.fairyoo.fring.repository;
 
-import com.fairyoo.fring.entity.User;
+import com.fairyoo.fring.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author MengYi at 2018-12-26 21:21
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     /**
      * find By Name
@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return User
      * @author by MengYi at 2018-12-26 21:29
      */
-    User findByName(String name);
+    UserEntity findByName(String name);
 
     /**
      * find By Name Or Email
@@ -27,5 +27,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return User
      * @author by MengYi at 2018-12-26 21:28
      */
-    User findByNameOrEmail(String name, String email);
+    UserEntity findByNameOrEmail(String name, String email);
 }

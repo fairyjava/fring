@@ -1,12 +1,12 @@
 package com.fairyoo.fring.web.dtoout;
 
-import com.fairyoo.fring.entity.User;
+import com.fairyoo.fring.entity.UserEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @ApiModel(value = "用户")
-public class UserOut {
+public class UserOut implements Serializable {
 
     /**
      * 主键id
@@ -58,7 +58,7 @@ public class UserOut {
      * @author by MengYi at 2019-01-02 20:12
      */
     @ApiModelProperty(value = "创建时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date creationTime;
 
 
@@ -68,11 +68,13 @@ public class UserOut {
      * @author by MengYi at 2019-01-02 20:12
      */
     @ApiModelProperty(value = "修改时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date lastModificationTime;
 
+    public UserOut() {
+    }
 
-    public UserOut (User model) {
+    public UserOut(UserEntity model) {
 
         this.id = model.getId();
         this.phone = model.getPhone();

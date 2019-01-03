@@ -89,6 +89,17 @@
 
 
 
+        <!--feign start 使用Feign作为HTTP客户端调用远程HTTP服务-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-feign</artifactId>-->
+            <!--<version>1.3.2.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--feign end-->
+
+
+
+
     </dependencies>
 
     <build>

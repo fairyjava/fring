@@ -1,4 +1,4 @@
-package com.fairyoo.fring.service;
+package com.fairyoo.fring.web.service;
 
 /**
  * @author MengYi at 2019-01-04 10:15

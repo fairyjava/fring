@@ -1,6 +1,6 @@
 package com.fairyoo.fring.web.controller;
 
-import com.fairyoo.fring.service.UserService;
+import com.fairyoo.fring.web.service.UserService;
 import com.fairyoo.fring.util.QueryResult;
 import com.fairyoo.fring.web.dtoout.UserOut;
 import io.swagger.annotations.Api;

@@ -26,10 +26,17 @@ public class FringWebFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-        filterChain.doFilter(servletRequest,servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
 
-        var request = (HttpServletRequest) servletRequest;
-        System.out.println(FringWebFilter.class.getSimpleName() +",当前URL地址 :"+request.getRequestURI());
+        var uri = ((HttpServletRequest) servletRequest).getRequestURI();
+        if (uri.isEmpty()) {
+            return;
+        }
+        if(uri.equals("/v2/api-docs")) {
+            return;
+        }
+
+        System.out.println(FringWebFilter.class.getSimpleName() + ",当前URL地址 :" + uri);
 
     }
 
@@ -37,7 +44,6 @@ public class FringWebFilter implements Filter {
     public void destroy() {
 
     }
-
 
 
 }

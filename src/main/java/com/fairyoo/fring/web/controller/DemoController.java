@@ -1,7 +1,9 @@
 package com.fairyoo.fring.web.controller;
 
 
-
+import com.fairyoo.fring.feign.NodeFeignClient;
+import com.fairyoo.fring.feign.dtos.CnodeTopicsRequest;
+import com.fairyoo.fring.feign.dtos.CnodeTopicsResponse;
 import io.swagger.annotations.Api;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ import java.util.UUID;
  *
  * @author MengYi at 2018-12-26 14:45
  */
-@Api(tags ="Demo", value = "")
+@Api(tags = "Demo", value = "")
 @RestController
 @RequestMapping(value = "/demo/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DemoController {
@@ -75,20 +77,31 @@ public class DemoController {
 //    }
 
 
-    /**
-     * uid
-     *
-     * @author by MengYi at 2018-12-26 15:24
-     */
-    @RequestMapping("/uid")
-    public String uid(HttpSession session) {
-        UUID uid = (UUID) session.getAttribute("uid");
-        if (uid == null) {
-            uid = UUID.randomUUID();
-        }
-        session.setAttribute("uid", uid);
-        return session.getId();
+//    /**
+//     * uid
+//     *
+//     * @author by MengYi at 2018-12-26 15:24
+//     */
+//    @RequestMapping("/uid")
+//    public String uid(HttpSession session) {
+//        UUID uid = (UUID) session.getAttribute("uid");
+//        if (uid == null) {
+//            uid = UUID.randomUUID();
+//        }
+//        session.setAttribute("uid", uid);
+//        return session.getId();
+//    }
+
+
+
+
+    @Autowired
+    private NodeFeignClient nodeFeignClient;
+
+
+    @GetMapping(value = "/feign/so")
+    public CnodeTopicsResponse get() {
+        var repsonse = nodeFeignClient.getManages(20);
+        return repsonse;
     }
-
-
 }

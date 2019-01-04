@@ -3,7 +3,6 @@ package com.fairyoo.fring.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,14 +11,14 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "User")
-public class UserEntity implements Serializable {
+public class UserEntity {
 
     /**
      * 主键id
      *
      * @author by MengYi at 2018-12-26 21:24
     */
-    @Id
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -47,6 +46,15 @@ public class UserEntity implements Serializable {
      */
     @Column(name = "email", nullable = false)
     private String email;
+
+
+    /**
+     * 机构id
+     *
+     * @author MengYi at 2018-12-24 15:07
+     */
+    @Column(name = "OrgId", nullable = false)
+    private Long orgId;
 
 
     /**

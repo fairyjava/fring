@@ -51,6 +51,14 @@ public class UserOut implements Serializable {
     @ApiModelProperty(value = "email")
     private String email;
 
+    /**
+     * 机构id
+     *
+     * @author MengYi at 2018-12-24 15:07
+     */
+    private Long orgId;
+
+
 
     /**
      * 创建时间
@@ -80,6 +88,7 @@ public class UserOut implements Serializable {
         this.phone = model.getPhone();
         this.name = model.getName();
         this.email = model.getEmail();
+        this.orgId = model.getOrgId();
         this.creationTime = model.getCreationTime();
         this.lastModificationTime = model.getLastModificationTime();
     }

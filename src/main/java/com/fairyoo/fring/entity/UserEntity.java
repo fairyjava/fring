@@ -62,7 +62,7 @@ public class UserEntity {
      *
      * @author by MengYi at 2019-01-02 20:12
     */
-    @Column(name = "CreationTime", nullable = false)
+    //@Column(name = "CreationTime")
     private Date creationTime;
 
     /**
@@ -76,9 +76,9 @@ public class UserEntity {
 
 
 
-    public UserEntity() {
-        super();
-    }
+//    public User() {
+//        super();
+//    }
 
 
 

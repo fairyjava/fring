@@ -1,5 +1,6 @@
 package com.fairyoo.fring.web.controller;
 
+import com.fairyoo.fring.rabbit.fanout.FanoutRabbitSender;
 import com.fairyoo.fring.rabbit.hello.HelloRabbitSender;
 import com.fairyoo.fring.rabbit.topic.TopicRabbitSender;
 import com.fairyoo.fring.web.dtoout.CityOut;
@@ -26,6 +27,9 @@ public class RabbitController {
 
     @Autowired
     private TopicRabbitSender topicRabbitSender;
+
+    @Autowired
+    private FanoutRabbitSender fanoutRabbitSender;
 
     /**
      * hello：发送字符串
@@ -83,5 +87,17 @@ public class RabbitController {
     }
 
 
+    /**
+     * Fanout 就是我们熟悉的广播模式或者订阅模式，给Fanout交换机发送消息，绑定了这个交换机的所有队列都收到这个消息。
+     *
+     * @param message
+     * @author by MengYi at 2018-12-27 20:08
+     */
+    @ApiOperation(value = "Fanout 就是我们熟悉的广播模式或者订阅模式:发送字符串")
+    @PostMapping(value = "/fanout/sendString/{message}")
+    public void fanout_send_String(@PathVariable("message") String message) throws IOException {
+
+        fanoutRabbitSender.sendString(message);
+    }
 
 }

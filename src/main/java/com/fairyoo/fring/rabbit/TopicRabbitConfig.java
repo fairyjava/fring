@@ -20,7 +20,7 @@ public class TopicRabbitConfig {
     public final static String topic_routingKey1 = "fring.routingKey.topic.message1";
     public final static String topic_routingKey2 = "fring.routingKey.topic.message2";
 
-    public final static String topic_exchangeName = "fring.exchangeName.topic";
+    public final static String topic_exchangeName = "fring.exchange.topic.1";
 
 
     /**

@@ -24,14 +24,14 @@ public class HelloRabbitSender {
     private AmqpTemplate amqpTemplate;
 
 
-    public void sendString(String message) {
+    public void sendString(String message) throws Exception {
 
         var str = MessageFormat.format("{0}  ({1})", message, FringTimeUtil.yyyyMMddHHmmss(new Date()));
 
         this.amqpTemplate.convertAndSend(FringRabbitConfig.hello_queueName, str);
     }
 
-    public <T extends IOut> void sendDto(T t){
+    public <T extends IOut> void sendDto(T t) throws Exception {
 
         //var message = FringJsonUtil.convertObj2String(t);
         //var str = MessageFormat.format("{0}  ({1})", message, FringTimeUtil.yyyyMMddHHmmss(new Date()));

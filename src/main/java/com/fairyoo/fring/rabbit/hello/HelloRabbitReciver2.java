@@ -22,11 +22,11 @@ public class HelloRabbitReciver2 {
      * 消费string类型的消息
      *
      * @author by MengYi at 2019-01-07 15:40
-    */
+     */
     @RabbitHandler
-    public void processString(String message) {
+    public void processString(String message) throws Exception {
 
-        System.out.printf("[%s][@RabbitHandler][队列名称：%s] [消费string类型的消息]: %s" , HelloRabbitReciver2.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+        System.out.printf("[%s][@RabbitHandler][队列名称：%s] [消费string类型的消息]: %s", HelloRabbitReciver2.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
 
     }
 
@@ -37,8 +37,8 @@ public class HelloRabbitReciver2 {
      * @author by MengYi at 2019-01-07 15:39
      */
     @RabbitHandler
-    public void processDto(IOut out) {
-        var message = FringJsonUtil.convertObj2String(out) ;
-        System.out.printf("[%s][@RabbitHandler][队列名称：%s] [消费dto类型的消息]: %s" , HelloRabbitReciver2.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+    public void processDto(IOut out) throws Exception {
+        var message = FringJsonUtil.convertObj2String(out);
+        System.out.printf("[%s][@RabbitHandler][队列名称：%s] [消费dto类型的消息]: %s", HelloRabbitReciver2.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
     }
 }

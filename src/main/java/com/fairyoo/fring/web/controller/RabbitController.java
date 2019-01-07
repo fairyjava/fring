@@ -1,6 +1,7 @@
 package com.fairyoo.fring.web.controller;
 
 import com.fairyoo.fring.rabbit.hello.HelloRabbitSender;
+import com.fairyoo.fring.rabbit.topic.TopicRabbitSender;
 import com.fairyoo.fring.web.dtoout.CityOut;
 import com.fairyoo.fring.web.dtoout.UserOut;
 import io.swagger.annotations.Api;
@@ -23,13 +24,16 @@ public class RabbitController {
     @Autowired
     private HelloRabbitSender helloRabbitSender;
 
+    @Autowired
+    private TopicRabbitSender topicRabbitSender;
+
     /**
      * hello：发送字符串
      *
      * @param message
      * @author by MengYi at 2018-12-27 20:08
      */
-    @ApiOperation(value = "helloSenderString")
+    @ApiOperation(value = "hello：发送字符串")
     @PostMapping(value = "/hello/sendString/{message}")
     public void helloSenderString(@PathVariable("message") String message) throws IOException {
 
@@ -43,10 +47,41 @@ public class RabbitController {
      * @param user
      * @author by MengYi at 2018-12-27 20:08
      */
-    @ApiOperation(value = "helloSenderDto")
+    @ApiOperation(value = "hello：发送 user dto")
     @PostMapping(value = "/hello/sendDto")
     public void helloSenderDto(@RequestBody UserOut user) throws IOException {
 
         helloRabbitSender.sendDto(user);
     }
+
+
+    /**
+     * topic：routingKey1:发送字符串
+     *
+     * @param message
+     * @author by MengYi at 2018-12-27 20:08
+     */
+    @ApiOperation(value = "topic：routingKey1:发送字符串")
+    @PostMapping(value = "/topic/routingKey1/sendString/{message}")
+    public void topic_send_routingKey1_String(@PathVariable("message") String message) throws IOException {
+
+        topicRabbitSender.send_routingKey1_String(message);
+    }
+
+
+    /**
+     * topic：routingKey2:发送字符串
+     *
+     * @param message
+     * @author by MengYi at 2018-12-27 20:08
+     */
+    @ApiOperation(value = "topic：routingKey2:发送字符串")
+    @PostMapping(value = "/topic/routingKey2/sendString/{message}")
+    public void topic_send_routingKey2_String(@PathVariable("message") String message) throws IOException {
+
+        topicRabbitSender.send_routingKey2_String(message);
+    }
+
+
+
 }

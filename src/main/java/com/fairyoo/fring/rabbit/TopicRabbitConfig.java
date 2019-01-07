@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @author MengYi at 2019-01-07 16:42
  */
 @Configuration
-public class FringRabbitTopicConfig {
+public class TopicRabbitConfig {
 
     public final static String topic_queueName1 = "fring.queueName.topic.message1";
 

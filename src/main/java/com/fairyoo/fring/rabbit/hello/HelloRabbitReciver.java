@@ -9,6 +9,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import java.text.MessageFormat;
+
 /**
  * 消费者1
  *
@@ -27,7 +29,8 @@ public class HelloRabbitReciver {
     @RabbitHandler
     public void processString(String message) {
 
-        System.out.printf("[%s][@RabbitHandler][队列名称：%s] [消费string类型的消息]: %s" , HelloRabbitReciver.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+        var msg = MessageFormat.format("[{0}][@RabbitHandler][队列名称：{1}] [消费string类型的消息]: {2}" , HelloRabbitReciver.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+        System.out.println(msg);
 
     }
 
@@ -39,7 +42,9 @@ public class HelloRabbitReciver {
     @RabbitHandler
     public void processDto(IOut out) {
         var message = FringJsonUtil.convertObj2String(out) ;
-        System.out.printf("[%s][@RabbitHandler][队列名称：%s] [消费dto类型的消息]: %s" , HelloRabbitReciver.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+
+        var msg = MessageFormat.format("[{0}][@RabbitHandler][队列名称：{1}] [消费dto类型的消息]: {2}" , HelloRabbitReciver.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+        System.out.println(msg);
     }
 
 

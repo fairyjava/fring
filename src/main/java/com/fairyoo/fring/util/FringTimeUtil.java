@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class FringTimeUtil {
 
-    private static final SimpleDateFormat FORMAT_YYYYMMDDHHMMSS = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static final SimpleDateFormat Format_yyyyMMddHHmmss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 获取yyyy-MM-dd hh:mm:ss格式日期
@@ -17,6 +17,6 @@ public class FringTimeUtil {
      * @return 返回格式化后的日期字符串
      */
     public static String yyyyMMddHHmmss(Date date) {
-        return FORMAT_YYYYMMDDHHMMSS.format(date);
+        return Format_yyyyMMddHHmmss.format(date);
     }
 }

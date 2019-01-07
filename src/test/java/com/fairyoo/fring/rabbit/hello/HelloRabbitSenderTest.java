@@ -21,6 +21,6 @@ public class HelloRabbitSenderTest {
     @Test
     public void helloSender() throws Exception {
 
-        helloRabbitSender.send("HelloRabbitSenderTest");
+        helloRabbitSender.sendString("HelloRabbitSenderTest");
     }
 }

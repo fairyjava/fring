@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel(value = "城市")
-public class CityOut implements Serializable {
+public class CityOut implements Serializable, IOut {
 
     /**
      * 城市id
@@ -41,8 +41,10 @@ public class CityOut implements Serializable {
     private String description;
 
 
-    public CityOut(){}
-    public CityOut(CityEntity model){
+    public CityOut() {
+    }
+
+    public CityOut(CityEntity model) {
 
         this.id = model.getId();
         this.provinceId = model.getProvinceId();

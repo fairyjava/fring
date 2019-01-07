@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @ApiModel(value = "用户")
-public class UserOut implements Serializable {
+public class UserOut implements Serializable, IOut {
 
     /**
      * 主键id
@@ -57,7 +57,6 @@ public class UserOut implements Serializable {
      * @author MengYi at 2018-12-24 15:07
      */
     private Long orgId;
-
 
 
     /**

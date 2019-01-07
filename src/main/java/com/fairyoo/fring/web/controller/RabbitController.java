@@ -2,6 +2,7 @@ package com.fairyoo.fring.web.controller;
 
 import com.fairyoo.fring.rabbit.hello.HelloRabbitSender;
 import com.fairyoo.fring.web.dtoout.CityOut;
+import com.fairyoo.fring.web.dtoout.UserOut;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.var;
@@ -21,16 +22,29 @@ public class RabbitController {
     private HelloRabbitSender helloRabbitSender;
 
     /**
-     * helloRabbitSender
+     * hello：发送字符串
      *
-     * @param
-     * @return 城市实体
+     * @param message
      * @author by MengYi at 2018-12-27 20:08
      */
-    @ApiOperation(value = "helloSender")
-    @PostMapping(value = "/helloSender/{message}")
-    public void helloSender(@PathVariable("message") String message) {
+    @ApiOperation(value = "helloSenderString")
+    @PostMapping(value = "/hello/sendString/{message}")
+    public void helloSenderString(@PathVariable("message") String message) {
 
-        helloRabbitSender.send(message);
+        helloRabbitSender.sendString(message);
+    }
+
+
+    /**
+     * hello：发送 user dto
+     *
+     * @param user
+     * @author by MengYi at 2018-12-27 20:08
+     */
+    @ApiOperation(value = "helloSenderDto")
+    @PostMapping(value = "/hello/sendDto")
+    public void helloSenderDto(@RequestBody UserOut user) {
+
+        helloRabbitSender.sendDto(user);
     }
 }

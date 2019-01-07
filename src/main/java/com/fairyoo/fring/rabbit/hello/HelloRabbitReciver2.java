@@ -6,18 +6,17 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * @author MengYi at 2019-01-07 14:33
+ * @author MengYi at 2019-01-07 15:13
  */
-
 @Component
 @RabbitListener(queues = FringRabbitConfig.hello_queueName)
-public class HelloRabbitReciver {
+public class HelloRabbitReciver2 {
 
 
     @RabbitHandler
     public void process(String message) {
 
-        System.out.printf("[%s][@RabbitHandler][队列名称：%s] : %s" , HelloRabbitReciver.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
+        System.out.printf("[%s][@RabbitHandler][队列名称：%s] : %s" , HelloRabbitReciver2.class.getSimpleName(), FringRabbitConfig.hello_queueName, message);
 
     }
 }

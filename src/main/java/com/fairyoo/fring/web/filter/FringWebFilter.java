@@ -7,6 +7,8 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.text.MessageFormat;
 
 /**
  * FringWebFilter要能生效，需要在"FringApplication"上加'@ServletComponentScan'注解
@@ -32,11 +34,12 @@ public class FringWebFilter implements Filter {
         if (uri.isEmpty()) {
             return;
         }
-        if(uri.equals("/v2/api-docs")) {
+        if (uri.equals("/v2/api-docs")) {
             return;
         }
 
-        System.out.println(FringWebFilter.class.getSimpleName() + ",当前URL地址 :" + uri);
+        var message = MessageFormat.format("[{0}][doFilter] 当前URL地址 :{1}", FringWebFilter.class.getSimpleName(), URLDecoder.decode(uri, "UTF-8"));
+        System.out.println(message);
 
     }
 

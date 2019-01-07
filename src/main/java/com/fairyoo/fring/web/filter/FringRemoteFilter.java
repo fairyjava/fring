@@ -5,6 +5,8 @@ import lombok.var;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.text.MessageFormat;
 
 /**
  * FringRemoteFilter
@@ -24,7 +26,8 @@ public class FringRemoteFilter implements Filter {
         // TODO Auto-generated method stub
 
         var request = (HttpServletRequest) servletRequest;
-        System.out.println(FringRemoteFilter.class.getSimpleName() +",当前URL地址 :"+request.getRequestURI());
+        var message = MessageFormat.format("[{0}][doFilter] 当前URL地址 :{1}", FringRemoteFilter.class.getSimpleName(), URLDecoder.decode(request.getRequestURI(), "UTF-8"));
+        System.out.println(message);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

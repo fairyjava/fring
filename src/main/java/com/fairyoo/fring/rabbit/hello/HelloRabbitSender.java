@@ -9,6 +9,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Date;
 
@@ -24,14 +25,14 @@ public class HelloRabbitSender {
     private AmqpTemplate amqpTemplate;
 
 
-    public void sendString(String message) throws Exception {
+    public void sendString(String message) throws IOException {
 
         var str = MessageFormat.format("{0}  ({1})", message, FringTimeUtil.yyyyMMddHHmmss(new Date()));
 
         this.amqpTemplate.convertAndSend(FringRabbitConfig.hello_queueName, str);
     }
 
-    public <T extends IOut> void sendDto(T t) throws Exception {
+    public <T extends IOut> void sendDto(T t) throws IOException {
 
         //var message = FringJsonUtil.convertObj2String(t);
         //var str = MessageFormat.format("{0}  ({1})", message, FringTimeUtil.yyyyMMddHHmmss(new Date()));

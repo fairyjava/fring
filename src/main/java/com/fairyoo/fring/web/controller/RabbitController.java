@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 /**
  * @author MengYi at 2019-01-07 14:24
  */
@@ -29,7 +31,7 @@ public class RabbitController {
      */
     @ApiOperation(value = "helloSenderString")
     @PostMapping(value = "/hello/sendString/{message}")
-    public void helloSenderString(@PathVariable("message") String message) {
+    public void helloSenderString(@PathVariable("message") String message) throws IOException {
 
         helloRabbitSender.sendString(message);
     }
@@ -43,7 +45,7 @@ public class RabbitController {
      */
     @ApiOperation(value = "helloSenderDto")
     @PostMapping(value = "/hello/sendDto")
-    public void helloSenderDto(@RequestBody UserOut user) {
+    public void helloSenderDto(@RequestBody UserOut user) throws IOException {
 
         helloRabbitSender.sendDto(user);
     }

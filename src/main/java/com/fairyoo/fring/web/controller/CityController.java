@@ -1,10 +1,13 @@
 package com.fairyoo.fring.web.controller;
 
 import com.fairyoo.fring.entity.CityEntity;
+import com.fairyoo.fring.repository.CityRepository;
 import com.fairyoo.fring.web.dtoout.CityOut;
 import io.swagger.annotations.*;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,25 +19,25 @@ import java.util.stream.Collectors;
  *
  * @author MengYi at 2018-12-27 17:00
  */
-@Api(tags = "城市管理", value = "")
+@Api(tags = "城市管理", value = "城市管理")
 @RestController
 @RequestMapping(value = "/fring/api/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CityController {
 
     @Autowired
-    private com.fairyoo.fring.repository.CityRepository cityRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    private org.springframework.data.redis.core.RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     @Autowired
-    private org.springframework.data.redis.core.StringRedisTemplate stringRedisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
 
     /**
      * 按id获取单个城市
      *
-     * @param
+     * @param id id
      * @return 城市实体
      * @author by MengYi at 2018-12-27 20:08
      */
@@ -42,7 +45,10 @@ public class CityController {
     @RequestMapping(value = "/city/{id}", method = RequestMethod.GET)
     public CityOut findOneCity(@PathVariable("id") Long id) {
 
-        var city = cityRepository.findById(id).get();
+        var cityEntityOptional = cityRepository.findById(id);
+        //throw new MyException(ResultCodeEnum.ERROR_USER_IS_NOT_FOUND);
+        var city = cityEntityOptional.get();
+
         return new CityOut(city);
     }
 
@@ -66,7 +72,7 @@ public class CityController {
         redisTemplate.opsForList().leftPush("user:list", list.toString());
         stringRedisTemplate.opsForValue().set("user:name", "张三");
 
-        var outs = list.stream().map(e -> new CityOut(e)).collect(Collectors.toList());
+        var outs = list.stream().map(CityOut::new).collect(Collectors.toList());
         return outs;
     }
 

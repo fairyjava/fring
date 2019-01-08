@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping(value = "/fring/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UserController {
 
+
     /**
      * 测试action
      *

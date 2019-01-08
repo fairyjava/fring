@@ -6,6 +6,7 @@ package com.fairyoo.fring.web.service;
 
 import com.fairyoo.fring.entity.UserEntity;
 import com.fairyoo.fring.repository.UserRepository;
+import com.fairyoo.fring.util.FringStringUtil;
 import com.fairyoo.fring.util.QueryResult;
 import com.fairyoo.fring.web.dtoout.UserOut;
 import lombok.var;
@@ -16,9 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -32,19 +31,25 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
+    @Autowired
     private UserRepository userRepository;
 
-    /**
-     * 构造函数
-     * 通过@Autowired 引用数据访问层。
-     *
-     * @author MengYi at 2018-12-24 15:57
-     * Autowired // 从Spring 容器中 加载Bean
-     */
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    /**
+//     * 构造函数
+//     * 通过@Autowired 引用数据访问层。
+//     *
+//     * @author MengYi at 2018-12-24 15:57
+//     * Autowired // 从Spring 容器中 加载Bean
+//     */
+//    @Autowired
+//    public UserService(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
+//
+//    /**
+//     * 构造函数
+//     */
+//    public UserService() { }
 
 
     /**
@@ -175,7 +180,7 @@ public class UserService {
     /**
      * 通过姓名模糊查询分页列表
      *
-     * @param name 姓名
+     * @param name      姓名
      * @param pageIndex pageIndex
      * @param pageSize  pageSize
      * @return QueryResult<UserResultDto>
@@ -201,6 +206,8 @@ public class UserService {
      * @author MengYi at 2018-12-25 11:51
      */
     public List<UserOut> getUserListByOrgIds(String orgIdsStr) {
+
+        if (FringStringUtil.isNullOrEmpty(orgIdsStr)) { return new ArrayList<UserOut>();  }
 
         //字符串数组转换为集合
         List<Long> orgIds = Arrays.stream(orgIdsStr.split(","))

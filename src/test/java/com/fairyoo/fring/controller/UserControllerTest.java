@@ -53,9 +53,9 @@ public class UserControllerTest {
     */
     @Test
     public void getUsersByOrgIds() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/fring/v1/users/org?orgIds=1")
+        mvc.perform(MockMvcRequestBuilders.get("/fring/v1/users/org")
                 //.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                //.param("orgIds", "1")
+                .param("orgIds", "1")
                 //.accept(MediaType.APPLICATION_JSON_UTF8_VALUE)
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())

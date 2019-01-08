@@ -1,8 +1,12 @@
 package com.fairyoo.fring.web.controller;
 
+import com.fairyoo.fring.util.FringQuartzUtil;
+import com.fairyoo.fring.util.FringScheduledUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.var;
+import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * SpringBoot几种定时任务的实现方式
@@ -29,19 +36,48 @@ import java.util.TimerTask;
 @RequestMapping(value = "/fring/timer", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TimerController {
 
+//    @Autowired
+//    private FringScheduledUtil fringScheduledUtil;
+//
+//    @Autowired
+//    private FringQuartzUtil fringQuartzUtil;
+//
+//
+//    @ApiOperation(value = "TimerTask")
+//    @GetMapping(value = "/timerTask")
+//    public void timerRun() {
+//        TimerTask timerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                System.out.println("task  run:"+ new Date());
+//            }
+//        };
+//
+//        var t = new Timer();
+//        t.schedule(timerTask, 10,3000);
+//
+//    }
+//
+//    @ApiOperation(value = "ScheduledExecutorService")
+//    @GetMapping(value = "/scheduledRun")
+//    public void scheduledRun() {
+//        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+//
+//        //// 参数：1、任务体 2、首次执行的延时时间    3、任务执行间隔 4、间隔时间单位
+//        service.scheduleAtFixedRate(()-> {
+//
+//            System.out.println("task ScheduledExecutorService "+new Date());
+//
+//        }, 10, 3000, TimeUnit.MILLISECONDS);
+//    }
+//
+//    @ApiOperation(value = "FringScheduledUtil.asyncscheduledFixedRate")
+//    @GetMapping(value = "/asyncscheduledFixedRate")
+//    public void asyncscheduledFixedRate() {
+//        fringScheduledUtil.fixedRate();
+//    }
+//
 
-    @ApiOperation(value = "TimerTask")
-    @GetMapping(value = "/timerTask")
-    public void timerRun() {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("task  run:"+ new Date());
-            }
-        };
 
-        var t = new Timer();
-        t.schedule(timerTask, 10,3000);
 
-    }
 }

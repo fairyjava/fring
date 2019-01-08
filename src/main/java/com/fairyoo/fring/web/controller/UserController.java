@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Api(tags ="用户管理", value = "")
 @RestController
-@RequestMapping(value = "/user/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/fring/v1", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UserController {
 
     /**

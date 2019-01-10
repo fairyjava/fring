@@ -14,13 +14,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class HelloRabbitSenderTest {
 
 
+//    @Autowired
+//    private HelloRabbitSender helloRabbitSender;
 
-    @Autowired
-    private HelloRabbitSender helloRabbitSender;
+//    @Test
+//    public void helloSender() throws Exception {
+//
+//        helloRabbitSender.sendString("HelloRabbitSenderTest");
+//    }
 
     @Test
-    public void helloSender() throws Exception {
+    public void helloSender() {
 
-        helloRabbitSender.sendString("HelloRabbitSenderTest");
     }
 }

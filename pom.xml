@@ -10,13 +10,16 @@
     </parent>
     <groupId>com.fairyoo</groupId>
     <artifactId>fring</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>com.fairyoo.fring::spring boot restful api</name>
+    <!--<version>0.0.1-SNAPSHOT</version>-->
+    <version>1.0</version>
+    <name>com.fairyoo.fring</name>
     <description>Fring project for Spring Boot,Learn Java</description>
     <packaging>jar</packaging>
 
     <properties>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <docker.image.prefix>springboot</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -148,6 +151,26 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- Docker maven plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <!--https://blog.csdn.net/TMaskBoy/article/details/82562413-->
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+            <!-- Docker maven plugin -->
         </plugins>
     </build>
 

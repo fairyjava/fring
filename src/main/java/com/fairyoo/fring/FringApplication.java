@@ -25,8 +25,10 @@ public class FringApplication {
         //TODO springboot整合shiro-登录认证和权限管理 http://www.ityouknow.com/springboot/2017/06/26/springboot-shiro.html
         //TODO 邮件服务  http://www.ityouknow.com/springboot/2017/05/06/springboot-mail.html
         //TODO Spring boot中mongodb的使用  http://www.ityouknow.com/springboot/2017/05/08/springboot-mongodb.html
+        //TODO linux搭建分布式文件系统FastDFS并整合spring boot   https://blog.csdn.net/xcg132566/article/details/79163790
 
 
+        //TODO nginx
 
     }
 

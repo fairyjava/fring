@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "docker", value = "docker")
 @RestController
-@RequestMapping(value = "", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//@RequestMapping(value = "", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DockerController {
 
     @ApiOperation(value = "index")
